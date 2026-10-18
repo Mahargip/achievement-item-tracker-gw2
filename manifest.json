@@ -1,0 +1,37 @@
+{
+  "name": "Achievement Item Tracker",
+  "version": "0.1.0",
+  "namespace": "Mapam.AchievementItemTracker",
+  "package": "AchievementItemTracker.dll",
+  "manifest_version": 1,
+  "description": "Searches achievements and tracks required items, displaying your current owned counts across bags, bank, material storage, and shared inventory.",
+  "dependencies": {
+    "bh.blishhud": ">=1.2.0"
+  },
+  "url": "https://github.com",
+  "contributors": [
+    {
+      "name": "Mapam"
+    }
+  ],
+  "directories": [ "achievement-item-tracker" ],
+  "enabled_without_gw2": false,
+  "api_permissions": {
+    "account": {
+      "optional": false,
+      "details": "Required to check API connection and account status."
+    },
+    "inventories": {
+      "optional": false,
+      "details": "Required to check item counts in your Bank, Material Storage, and Shared Inventory."
+    },
+    "characters": {
+      "optional": false,
+      "details": "Required to check item counts in your character inventories."
+    },
+    "progression": {
+      "optional": false,
+      "details": "Required to check your completed achievement progress and collection bits."
+    }
+  }
+}
