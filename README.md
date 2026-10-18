@@ -5,147 +5,148 @@
 [![GitHub Release](https://img.shields.io/github/v/release/Mahargip/achievement-item-tracker-gw2?color=brightgreen&label=Latest%20Release)](https://github.com/Mahargip/achievement-item-tracker-gw2/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Achievement Item Tracker** adalah modul in-game overlay untuk **[Blish HUD](https://blishhud.com/)** di game **Guild Wars 2**. Modul ini dirancang khusus untuk mempermudah pemain dalam mencari achievement dan melacak seluruh kebutuhan item koleksi secara instan dengan menghitung total item yang kamu miliki di seluruh tempat penyimpanan akunmu.
+**Achievement Item Tracker** is an in-game overlay module for **[Blish HUD](https://blishhud.com/)** in **Guild Wars 2**. It allows you to search any achievement and view the complete required item checklist with live totals of your owned items aggregated across all your account's storage locations.
 
 ---
 
-## 📖 Penjelasan Modul (Overview)
+## 📖 Module Overview
 
-Saat mengerjakan achievement atau koleksi di Guild Wars 2 (seperti *Legendary Weapons*, *Specialization Collections*, *Skins*, *Eater/Convergence achievements*, dsb.), pemain sering kali kesulitan mengetahui:
-- Item apa saja yang masih dibutuhkan untuk menyelesaikan achievement tersebut?
-- Apakah item tersebut sudah pernah disimpan di bank, material storage, atau tas karakter lain (*alt characters*)?
-- Berapa jumlah item yang sudah terkumpul dan berapa kekurangannya?
+When working on achievements or collections in Guild Wars 2 (such as *Legendary Weapons*, *Specialization Collections*, *Skins*, *Eater/Convergence achievements*, etc.), players frequently run into the same challenges:
+- *Which items are still missing to complete this collection?*
+- *Have I already stashed this item on an alt character, in my bank, or in material storage?*
+- *How many copies do I already own versus how many are required?*
 
-**Achievement Item Tracker** menjawab masalah tersebut dengan:
-1. Mengindeks seluruh achievement Guild Wars 2 secara lokal (offline) agar pencarian berlangsung cepat tanpa jeda.
-2. Membaca data API resmi Guild Wars 2 secara aman melalui Blish HUD.
-3. Mengagregasi (menjumlahkan) seluruh item yang relevan dari semua lokasi penyimpanan akunmu secara real-time.
-4. Menyediakan widget *floating pin* yang dapat ditempel di layar saat bermain tanpa menghalangi pandangan.
+**Achievement Item Tracker** solves these problems by:
+1. Providing an instant, local offline index of all Guild Wars 2 achievements.
+2. Securely querying the official Guild Wars 2 API via Blish HUD's `Gw2ApiManager`.
+3. Automatically aggregating item counts across every storage location on your account in real-time.
+4. Providing a compact, draggable floating screen pin widget so you can keep track of required items without obstructing gameplay.
 
 ---
 
-## ✨ Fitur Utama (Features)
+## ✨ Features
 
-- **🔍 Pencarian Cepat & Instan (Instant Offline Search)**
-  - Dilengkapi database lokal berisi lebih dari **8.300+** achievement Guild Wars 2 (`ref/achievements.json`).
-  - Pencarian nama achievement tanpa delay (0ms) dengan fitur filter khusus koleksi item.
+- **🔍 Instant Offline Search Index**
+  - Pre-indexed local database of over **8,300+** Guild Wars 2 achievements (`ref/achievements.json`).
+  - Search by name with 0ms latency and instant substring/word filtering.
+  - Quick filter toggle to show only collection- and item-based achievements.
 
-- **🎒 Cross-Account Inventory Aggregation (Pengecekan Lintas Karakter & Penyimpanan)**
-  - Secara otomatis memindai dan menghitung total item yang kamu miliki di:
-    - 🎒 **Tas Karakter Aktif maupun Karakter Alt** (*Character Bags*)
-    - 🏦 **Bank Akun** (*Account Bank*)
-    - 📦 **Penyimpanan Material** (*Material Storage*)
+- **🎒 Cross-Account Inventory Aggregation**
+  - Automatically queries and tallies item counts across:
+    - 🎒 **Active & Alt Character Bags**
+    - 🏦 **Account Bank**
+    - 📦 **Material Storage**
     - 💼 **Shared Inventory Slots**
-  - Menampilkan progress yang jelas: `[ 0 / 5 ]`, `[ 3 / 5 ]`, hingga `[ 5 / 5 ✓ ]`.
+  - Displays real-time progress for each requirement: `[ 0 / 5 ]`, `[ 3 / 5 ]`, up to `[ 5 / 5 ✓ ]`.
 
-- **🎨 Indikator Warna Rarity & Status Selesai**
-  - Nama item diformat dengan warna rarity resmi Guild Wars 2 (Junk, Basic, Fine, Masterwork, Rare, Exotic, Ascended, Legendary).
-  - Tanda centang hijau (**✓**) otomatis muncul jika syarat item/bit achievement telah terpenuhi di akunmu.
+- **🎨 Official Rarity Colors & Completion Status**
+  - Item names styled with official Guild Wars 2 rarity colors (Junk, Basic, Fine, Masterwork, Rare, Exotic, Ascended, Legendary).
+  - A green checkmark (**✓**) automatically indicates requirements or collection bits already completed on your account.
 
-- **💡 Tooltip Detail Lokasi Item**
-  - Cukup arahkan kursor mouse (*hover*) ke salah satu item untuk melihat rincian di mana saja item tersebut disimpan (contoh: *"In Character Bags: 2, In Bank: 3, In Material Storage: 5"*).
+- **💡 Rich Storage Location Tooltips**
+  - Hover over any item requirement row to see an exact breakdown of where each copy is stored (e.g. *"In Character Bags: 2, In Bank: 3, In Material Storage: 5"*).
 
-- **📌 In-Game Floating Pin Widget (Sematkan ke Layar)**
-  - Klik tombol **"📌 Pin to Screen"** pada achievement mana saja untuk memunculkan overlay mini yang ringkas dan bisa digeser (*draggable*).
-  - Memudahkanmu terus memantau daftar kebutuhan item saat menjelajahi Tyria tanpa perlu membuka-tutup jendela utama.
-  - Pilihan achievement yang di-pin tetap tersimpan meskipun game atau Blish HUD ditutup.
+- **📌 In-Game Floating Pin Widget**
+  - Click **"📌 Pin to Screen"** on any achievement to pop out a compact, movable HUD overlay.
+  - Keeps your item checklist visible while exploring Tyria without keeping the main search window open.
+  - Pinned achievement state persists across game and Blish HUD restarts.
 
-- **⚡ Corner Icon & Menu Cepat**
-  - Ikon khusus di bar atas Blish HUD:
-    - **Klik Kiri**: Membuka / menutup jendela pencarian.
-    - **Klik Kanan**: Menu pintas untuk *Open Tracker Window*, *Sync Inventory Now*, dan *Toggle Screen Pin Widget*.
-  - Dukungan tombol pintas (*Keybind / Hotkey*) yang dapat dikonfigurasi melalui menu pengaturan Blish HUD.
-
----
-
-## 📥 Download Modul
-
-File modul resmi yang siap pakai (`.bhm`) tersedia di halaman **Releases**:
-
-👉 **[Download Achievement Item Tracker Terbaru di Menu Releases](https://github.com/Mahargip/achievement-item-tracker-gw2/releases)**
-
-> Unduh file dengan ekstensi **`.bhm`** (contoh: `AchievementItemTracker.bhm`) pada rilis versi terbaru.
+- **⚡ Corner Icon & Context Menu**
+  - Dedicated icon in the Blish HUD top corner bar:
+    - **Left-Click**: Toggle the main tracker search window.
+    - **Right-Click**: Quick context menu (*Open Tracker Window*, *Sync Inventory Now*, *Toggle Screen Pin Widget*).
+  - Configurable hotkey/keybind in Blish HUD module settings.
 
 ---
 
-## 📦 Cara Menambahkan / Memasang Modul di Blish HUD
+## 📥 Download Module
 
-Ikuti langkah-langkah mudah berikut untuk memasang modul ini:
+The compiled, ready-to-use `.bhm` module file is available on the GitHub **Releases** page:
 
-### Langkah 1: Unduh File Modul
-Unduh file **`AchievementItemTracker.bhm`** dari halaman **[Releases](https://github.com/Mahargip/achievement-item-tracker-gw2/releases)**.
+👉 **[Download the Latest Achievement Item Tracker (.bhm) from Releases](https://github.com/Mahargip/achievement-item-tracker-gw2/releases)**
 
-### Langkah 2: Buka Folder Modules Blish HUD
-Buka folder `modules` Blish HUD di komputer Anda. Anda bisa membukanya dengan salah satu cara berikut:
+> Download the file with the **`.bhm`** extension (e.g., `AchievementItemTracker.bhm`) under the latest release.
 
-- **Cara Otomatis (Rekomendasi):**
-  1. Jalankan **Blish HUD**.
-  2. Buka menu pengaturan dengan mengklik ikon **Helm Blish HUD** di kiri atas layar.
-  3. Pilih tab **Manage Modules**.
-  4. Klik tombol **Open Modules Folder** di bagian atas.
-- **Cara Manual:**
-  Tekan `Windows + R`, lalu salin dan tempel alamat berikut kemudian tekan **Enter**:
+---
+
+## 📦 How to Install / Add Module in Blish HUD
+
+Follow these simple steps to install and enable the module:
+
+### Step 1: Download the `.bhm` File
+Download **`AchievementItemTracker.bhm`** from the **[Releases](https://github.com/Mahargip/achievement-item-tracker-gw2/releases)** page.
+
+### Step 2: Open the Blish HUD Modules Directory
+Open the Blish HUD `modules` folder on your computer using either method below:
+
+- **Automatic Method (Recommended):**
+  1. Launch **Blish HUD**.
+  2. Open the settings window by clicking the **Blish HUD Helmet icon** in the top-left of the screen.
+  3. Navigate to the **Manage Modules** tab.
+  4. Click the **Open Modules Folder** button at the top.
+- **Manual Method:**
+  Press `Win + R`, paste the following path, and hit **Enter**:
   ```text
   %USERPROFILE%\Documents\Guild Wars 2\addons\blishhud\modules
   ```
 
-### Langkah 3: Salin File Modul
-Salin (*copy*) file `AchievementItemTracker.bhm` yang telah diunduh, lalu tempel (*paste*) ke dalam folder `modules` tersebut.
+### Step 3: Copy the Module File
+Copy the downloaded `AchievementItemTracker.bhm` file and paste it into the `modules` folder.
 
-### Langkah 4: Aktifkan Modul di Blish HUD
-1. Buka kembali Blish HUD (atau restart Blish HUD jika sedang berjalan).
-2. Masuk ke **Manage Modules** (ikon Helm).
-3. Cari **Achievement Item Tracker** di daftar modul.
-4. Klik tombol toggle switch ke posisi **Enable Module**.
+### Step 4: Enable the Module in Blish HUD
+1. Switch back to Blish HUD (or restart Blish HUD if it was already running).
+2. Go to **Manage Modules** (Helmet icon).
+3. Find **Achievement Item Tracker** in the module list.
+4. Toggle the switch to **Enable Module**.
 
-### Langkah 5: Berikan Izin API (API Permissions)
-Modul ini memerlukan izin API agar dapat membaca inventaris dan progres achievement akun Anda secara akurat:
-- **`account`**: Memvalidasi koneksi akun GW2.
-- **`inventories`**: Membaca isi Bank, Material Storage, dan Shared Inventory Slots.
-- **`characters`**: Membaca isi tas dari semua karakter Anda.
-- **`progression`**: Mengecek status penyelesaian achievement dan koleksi.
+### Step 5: Grant Required API Permissions
+For the tracker to read your inventory items and achievement progress, ensure the following API permissions are granted:
+- **`account`**: Validates connection and account information.
+- **`inventories`**: Reads Bank, Material Storage, and Shared Inventory items.
+- **`characters`**: Reads bag contents across all your characters.
+- **`progression`**: Checks completed achievements and collection bit progress.
 
 > [!NOTE]
-> Pastikan API Key Guild Wars 2 yang terdaftar di Blish HUD Anda telah dicentang izin di atas melalui website [account.arena.net/applications](https://account.arena.net/applications).
+> Make sure the Guild Wars 2 API Key configured in your Blish HUD settings has these permissions enabled at [account.arena.net/applications](https://account.arena.net/applications).
 
 ---
 
-## 🎮 Cara Menggunakan Modul
+## 🎮 How to Use
 
-1. **Membuka Jendela Pencarian**:
-   - Klik ikon **Achievement Item Tracker** di pojok bar atas Blish HUD, atau gunakan Hotkey yang sudah diatur di Settings.
-2. **Mencari Achievement**:
-   - Ketikkan nama achievement pada kotak pencarian (contoh: *Ambrite Weapon Collection*, *Luminescent Armor*, *Bifrost III*, dll.).
-3. **Melihat Kebutuhan Item**:
-   - Klik salah satu hasil pencarian untuk melihat daftar item yang diperlukan beserta jumlah yang sudah kamu punya.
-   - Arahkan kursor ke item untuk melihat lokasi penyimpanan spesifik.
-4. **Menyematkan ke Layar (Pin)**:
-   - Klik tombol **📌 Pin to Screen** di kanan atas jendela.
-   - Pindahkan widget overlay kecil ke posisi layar yang kamu sukai.
-5. **Memperbarui Data Inventaris (Sync)**:
-   - Data inventaris otomatis diperbarui setiap 5 menit.
-   - Anda juga dapat melakukan sinkronisasi manual kapan saja dengan klik kanan pada ikon corner bar -> **Sync Inventory Now**.
+1. **Open the Tracker Window**:
+   - Click the **Achievement Item Tracker** icon in the Blish HUD top corner bar, or press your configured hotkey.
+2. **Search for an Achievement**:
+   - Type the name of any achievement in the search bar (e.g., *Ambrite Weapon Collection*, *Luminescent Armor*, *Bifrost III*).
+3. **Inspect Required Items**:
+   - Click any search result to view all required items alongside your current owned counts.
+   - Hover over an item row to see which characters or storage locations hold that item.
+4. **Pin to Screen**:
+   - Click **📌 Pin to Screen** in the top-right corner to open the floating HUD widget.
+   - Drag the widget to your desired position on screen.
+5. **Sync Inventory**:
+   - Inventory data automatically refreshes in the background every 5 minutes.
+   - You can trigger an instant manual refresh anytime by right-clicking the corner icon and selecting **Sync Inventory Now**.
 
 ---
 
-## 🛠️ Untuk Pengembang (Build from Source)
+## 🛠️ Building from Source (For Developers)
 
-Jika Anda ingin memodifikasi atau meng-compile modul ini sendiri:
+If you wish to build or contribute to the module:
 
-1. Clone repositori ini:
+1. Clone this repository:
    ```shell
    git clone https://github.com/Mahargip/achievement-item-tracker-gw2.git
    ```
-2. Buka solusi menggunakan Visual Studio 2022 atau via terminal:
+2. Build the solution using Visual Studio 2022 or via CLI:
    ```shell
    dotnet build -c Release
    ```
-3. Target MSBuild otomatis mengemas file `.bhm` dan menyalinnya langsung ke folder modul Blish HUD lokal Anda.
+3. The custom MSBuild packaging target will automatically package the `.bhm` archive and deploy it directly to your local Blish HUD modules directory.
 
 ---
 
-## 📜 Lisensi & Atribusi
+## 📜 License & Attribution
 
-- Modul ini dirilis di bawah lisensi **[MIT License](LICENSE)**.
-- Guild Wars 2 dan seluruh aset game terkait merupakan merek dagang terdaftar milik **ArenaNet LLC** & **NCSOFT**.
-- Modul ini menggunakan framework **[Blish HUD](https://blishhud.com/)** dan pustaka **[Gw2Sharp](https://github.com/Archomeda/Gw2Sharp)**.
+- This project is licensed under the **[MIT License](LICENSE)**.
+- Guild Wars 2 and all associated assets are registered trademarks of **ArenaNet LLC** and **NCSOFT**.
+- Built with **[Blish HUD](https://blishhud.com/)** and **[Gw2Sharp](https://github.com/Archomeda/Gw2Sharp)**.
