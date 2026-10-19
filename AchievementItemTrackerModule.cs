@@ -76,7 +76,7 @@ namespace AchievementItemTracker
 
             _showPinnedWidgetSetting = settings.DefineSetting(
                 "ShowPinnedWidget",
-                true,
+                false,
                 () => "Show Pinned Overlay",
                 () => "Display the compact pinned achievement overlay on the screen."
             );
@@ -117,6 +117,17 @@ namespace AchievementItemTracker
 
                 // 5. Create Pinned HUD Overlay
                 _pinnedWidget = new PinnedTrackerWidget();
+                _pinnedWidget.Closed += (s, e) =>
+                {
+                    if (_pinnedAchievementIdSetting != null)
+                    {
+                        _pinnedAchievementIdSetting.Value = 0;
+                    }
+                    if (_showPinnedWidgetSetting != null)
+                    {
+                        _showPinnedWidgetSetting.Value = false;
+                    }
+                };
 
                 // 6. Create Corner Icon & Context Menu
                 _cornerIcon = new CornerIcon
@@ -147,9 +158,10 @@ namespace AchievementItemTracker
                     _hotkeySetting.Value.Activated += OnHotkeyActivated;
                 }
 
-                // 8. Restore Pinned Achievement if saved
+                // 8. Restore Pinned Achievement only if user explicitly enabled it
                 int savedPinnedId = _pinnedAchievementIdSetting?.Value ?? 0;
-                if (savedPinnedId > 0)
+                bool shouldShowPinned = _showPinnedWidgetSetting?.Value ?? false;
+                if (savedPinnedId > 0 && shouldShowPinned)
                 {
                     var savedAch = _indexService.GetById(savedPinnedId);
                     if (savedAch != null)
@@ -184,12 +196,17 @@ namespace AchievementItemTracker
             {
                 if (_pinnedWidget != null) _pinnedWidget.Visible = false;
                 if (_pinnedAchievementIdSetting != null) _pinnedAchievementIdSetting.Value = 0;
+                if (_showPinnedWidgetSetting != null) _showPinnedWidgetSetting.Value = false;
                 return;
             }
 
             if (_pinnedAchievementIdSetting != null)
             {
                 _pinnedAchievementIdSetting.Value = item.Id;
+            }
+            if (_showPinnedWidgetSetting != null)
+            {
+                _showPinnedWidgetSetting.Value = true;
             }
 
             await RestorePinnedAchievementAsync(item);

@@ -21,6 +21,8 @@ namespace AchievementItemTracker.UI.Views
 
         public AchievementIndexItem? CurrentAchievement { get; private set; }
 
+        public event EventHandler? Closed;
+
         public PinnedTrackerWidget()
         {
             Size = new Point(280, 360);
@@ -54,6 +56,7 @@ namespace AchievementItemTracker.UI.Views
             {
                 Visible = false;
                 CurrentAchievement = null;
+                Closed?.Invoke(this, EventArgs.Empty);
             };
 
             // Progress

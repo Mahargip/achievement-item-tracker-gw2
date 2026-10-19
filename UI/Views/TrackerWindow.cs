@@ -143,7 +143,7 @@ namespace AchievementItemTracker.UI.Views
 
             _pinButton = new StandardButton
             {
-                Text = "📌 Pin to Screen",
+                Text = "Pin to Screen",
                 Location = new Point(140, 0),
                 Size = new Point(130, 26),
                 BasicTooltipText = "Keeps this tracker floating on your screen while playing",
